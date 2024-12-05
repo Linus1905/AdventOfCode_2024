@@ -6,6 +6,7 @@
       new Day02("D:\\Programmierung\\AdventOfCode_2024\\Input\\day02.txt").Solve();
       new Day03("D:\\Programmierung\\AdventOfCode_2024\\Input\\day03.txt").Solve();
       new Day04("D:\\Programmierung\\AdventOfCode_2024\\Input\\day04.txt").Solve();
+      new Day05("D:\\Programmierung\\AdventOfCode_2024\\Input\\day05.txt").Solve();
 
       Console.ReadKey();
     }
