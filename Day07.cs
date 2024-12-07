@@ -70,12 +70,18 @@ namespace AdventOfCode_2024 {
 
 
     private bool isEquationTrue(long targetVal, List<int> numbers, long curVal, int index, ref bool isTrue) {
-      if (curVal == targetVal) {
+      if (curVal == targetVal && numbers.Count == index) {
+        // 2. Bedingung entscheidend, da wohl ALLLE Lücken mit Operatoren
+        // gefüllt werden sollen (100: 50 50 2 ist somit z.B. nicht möglich) -> ewiges Debuggen :( und Hinweis bei Reddit gefunden
         isTrue = true;
         return true;
       }
 
       if (index >= numbers.Count) {
+        return false;
+      }
+
+      if (curVal > targetVal) {
         return false;
       }
 
@@ -87,6 +93,7 @@ namespace AdventOfCode_2024 {
         else curVal = concatNums(curVal, numbers[index]);
 
         isEquationTrue(targetVal, numbers, curVal, index + 1, ref isTrue);
+      
         curVal = tmp;
       }
 
@@ -95,25 +102,25 @@ namespace AdventOfCode_2024 {
 
     // 1000 concat 42 = 1000 * 100 + 42 = 100042 (performanter als string concat + int.parse)
     private long concatNums(long a, long b) {
-      //if (b < 10L) return 10L * a + b;
-      //if (b < 100L) return 100L * a + b;
-      //if (b < 1000L) return 1000L * a + b;
-      //if (b < 10000L) return 10000L * a + b;
-      //if (b < 100000L) return 100000L * a + b;
-      //if (b < 1000000L) return 1000000L * a + b;
-      //if (b < 10000000L) return 10000000L * a + b;
-      //if (b < 100000000L) return 100000000L * a + b;
-      //if (b < 1000000000L) return 1000000000L * a + b;
-      //if (b < 10000000000L) return 10000000000L * a + b;
-      //if (b < 100000000000L) return 100000000000L * a + b;
-      //if (b < 1000000000000L) return 1000000000000L * a + b;
-      //if (b < 10000000000000L) return 10000000000000L * a + b;
-      //if (b < 100000000000000L) return 100000000000000L * a + b;
-      //if (b < 1000000000000000L) return 1000000000000000L * a + b;
-      //if (b < 10000000000000000L) return 10000000000000000L * a + b;
-      //if (b < 100000000000000000L) return 100000000000000000L * a + b;
-      //return 1000000000000000000L * a + b;
-      return long.Parse(a + "" + b);
+      if (b < 10L) return 10L * a + b;
+      if (b < 100L) return 100L * a + b;
+      if (b < 1000L) return 1000L * a + b;
+      if (b < 10000L) return 10000L * a + b;
+      if (b < 100000L) return 100000L * a + b;
+      if (b < 1000000L) return 1000000L * a + b;
+      if (b < 10000000L) return 10000000L * a + b;
+      if (b < 100000000L) return 100000000L * a + b;
+      if (b < 1000000000L) return 1000000000L * a + b;
+      if (b < 10000000000L) return 10000000000L * a + b;
+      if (b < 100000000000L) return 100000000000L * a + b;
+      if (b < 1000000000000L) return 1000000000000L * a + b;
+      if (b < 10000000000000L) return 10000000000000L * a + b;
+      if (b < 100000000000000L) return 100000000000000L * a + b;
+      if (b < 1000000000000000L) return 1000000000000000L * a + b;
+      if (b < 10000000000000000L) return 10000000000000000L * a + b;
+      if (b < 100000000000000000L) return 100000000000000000L * a + b;
+      return 1000000000000000000L * a + b;
+      //return long.Parse(a + "" + b);
     }
 
     private class Equation {
